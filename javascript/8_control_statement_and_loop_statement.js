@@ -171,7 +171,7 @@ switch (value) {
 // 1 -> 2 -> default
 
 /**break가 없는 한,
-표현식과 일치한 case문 부터 마지막 case,default문 까지
-모든 명령문을 수행하는 역할을 한다. 따라서 해당되는 case문만 
-실행하고 싶으면 break를 넣어줘야 switch문을 종료하여 빠져 나온다.
+표현식과 일치한 case문 부터 마지막 case,default문 까지 모든 명령문을 수행하는 역할을 한다.
+이를 풀스루(full through)라 한다. 
+따라서 해당되는 case문만 실행하고 싶으면 break를 넣어줘야 switch문을 종료하여 빠져 나온다.
 */
