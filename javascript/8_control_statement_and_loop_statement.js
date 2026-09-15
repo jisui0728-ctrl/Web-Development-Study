@@ -175,3 +175,168 @@ switch (value) {
 이를 풀스루(full through)라 한다. 
 따라서 해당되는 case문만 실행하고 싶으면 break를 넣어줘야 switch문을 종료하여 빠져 나온다.
 */
+
+/**
+ * 8-3 반복문(loop statement)
+ */
+
+/** 8-3-1 for문  
+ * 
+ * for (초기화구문; 조건문; 증감문) {
+ *    statement;
+ * }
+ * 
+ * 조건식이 참일동안 statement 문을 반복 실행한다.
+*/
+
+for (var i = 1; i <= 10; i++ ) {
+    console.log(i);
+}
+
+for (var i = 1; i >= 0; i--) {
+    console.log(i);
+}
+//무한 루프
+// for (;;) {
+//     console.log("this is infinity loop.");
+// }
+
+/** --> 초기문,조건문과 증감문 모두 옵션이므로 
+반드시 사용 할 필요는 없다.
+다만, 정상적인 활용을 위하여 외부에서 반드시 제어와 선언을 해줘야 한다.
+*/
+
+//조건식이 없을경우,js엔진에서 true으로 인식한다.
+
+var a = 0;
+for (; a !== 10; ) {
+    console.log(a);
+    a++;
+}
+
+// for (var a = 0; a !== 10; a++) {
+//     console.log(a);
+// }
+
+/**
+ * 8-3-2 while문
+ * 
+ * while (조건식) {
+ *    statement;
+ * }
+ * 
+ * --> 조건식이 true일때만, statement문을 반복 실행한다.
+ */
+
+var number = 0;
+
+while (number < 10) {
+    console.log(number);
+    number = number + 2;
+} // 0 2 4 6 8
+
+//while (1) {
+//  console.log("this is infinity loop.");
+//}
+
+//1은 불리언 강제 타입 변환 하면 true로 판별되기 때문이다.
+
+var number2 = 0;
+
+while (true) {
+    console.log(number2)
+    if (number2 === 67) {
+        break;
+    }
+    number2++;
+}
+
+/**
+ * 8-3-3 do while문
+ * 
+ * do {
+ *     statement;
+ * } while (조건문);
+ * 
+ * --> do문을 처음으로 실행한뒤 조건문이 true인 동안
+ * 계속 do문을 반복 실행한다.
+ * [do문은 최소 1회 이상 실행되어야 한다.]
+ */
+
+var number3 = 0;
+
+do {
+    number3 += 1;
+    console.log(number3);
+} while (number3 < 5);
+
+/**
+ * 8-4 break문
+ * 
+ * label문,반복문,switch문 등 코드 블록을 탈출할때 사용.
+ * 
+ */
+
+/**label문 
+ * 
+ * keyword_label: code_block or loop_statement
+ * 
+ * --> 프로그램 순서를 제어하거나 중첩된 반복 루프에서
+ * 전체 루프를 탈출 하고 싶을때 사용한다.
+ * 탈출: break keyword_label;
+ * 
+ * 일반적으로 label문은 프로그램 흐름이 복잡해지고 가독성이 나빠져
+ * 일반적으로 사용 권장하지 않는다.
+ * 
+*/
+
+example_1: {
+    console.log("Hello,World!");
+    break example_1;
+    console.log("Done.");
+}
+
+example_2: for (var i = 2; i < 10; i++) {
+    for (var j = 1; j < 10; j++) {
+        if (i*j === 54) {
+            break example_2; //전체 반복 루프 탈출.
+        }
+        console.log(`${i} x ${j} = ${i*j}`);
+    }
+}
+
+/**
+ * 8-5 continue문
+ * 
+ * 반복문 또는 레이블문의 코드 블록 내에서 현시점 실행을 중단하고 곧 바로
+ * 코드 블록 또는 바깥 반복문(처음 반복문)처음 부분부터 다시 실행한다.
+ */
+
+i = 0;
+n = 0; // 1 + 2 + 4 + 5
+while (i < 5) {
+  i++;
+  if (i == 3) {
+    continue;
+  }
+  n += i;
+}
+
+console.log(n);
+
+checkiandj: while (i < 4) {
+  console.log(i);
+  i += 1;
+  checkj: while (j > 4) {
+    console.log(j);
+    j -= 1;
+    if (j % 2 == 0) {
+      continue checkj;
+    }
+    console.log(j + " is odd.");
+  }
+  console.log("i = " + i);
+  console.log("j = " + j);
+}
+
+//for in과 for of는 19장에서 자세히 학습.
